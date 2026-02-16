@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                     // Modern JS target
+    "module": "NodeNext",                   // Supports ES modules (import/export)
+    "moduleResolution": "NodeNext",         // Resolves modules like Node
+    "strict": true,                          // Enable strict type checks
+    "esModuleInterop": true,                 // Allows import path from CJS modules
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "playwright/test"],    // Node and Playwright types
+    "skipLibCheck": true
+  },
+  "include": ["**/*.ts"]                     // Include all TypeScript files
+}
