@@ -18,12 +18,12 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --project heroku-firefox --trace on
+      run: npm run run-heroku-chrome
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
-        name: playwright-report-heroku
-        path: playwright-report-heroku/
+        name: reports_cuevaschris
+        path: reports_cuevaschris/
         retention-days: 30
   test-swaglabs:
     timeout-minutes: 60
@@ -38,10 +38,10 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test tests/swaglabs/swaglabs-multiple-users.spec.ts --project swaglabs-tests --trace on
+      run: npm run run-swaglabs-tests
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
-        name: playwright-report-swaglabs
-        path: playwright-report-swaglabs/
+        name: reports_cuevaschris
+        path: reports_cuevaschris/
         retention-days: 30
