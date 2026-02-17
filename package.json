@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run-swaglabs-tests": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports_cuevaschris/swaglabs-tests-runs && npx playwright test tests/swaglabs/swaglabs-multiple-users.spec.ts --project swaglabs-tests --trace on",
-    "run-swaglabs-no-setup-tests": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports_cuevaschris/swaglabs-tests-runs && npx playwright test tests/swaglabs/swaglabs-multiple-users.spec.ts --project swaglabs-tests-no-setup --trace on",
-    "run-heroku-chrome": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports_cuevaschris/heroku-tests-chrome-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --trace on",
-    "run-heroku-firefox": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports_cuevaschris/heroku-tests-firefox-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-firefox --trace on",
-    "run-heroku-all-tests": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports_cuevaschris/heroku-tests-all-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --project heroku-firefox--trace on"
+    "run-swaglabs-tests": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-swaglabs/swaglabs-tests-runs && npx playwright test tests/swaglabs/swaglabs-multiple-users.spec.ts --project swaglabs-tests --trace on",
+    "run-swaglabs-no-setup-tests": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-swaglabs/swaglabs-tests-runs && npx playwright test tests/swaglabs/swaglabs-multiple-users.spec.ts --project swaglabs-tests-no-setup --trace on",
+    "run-heroku-chrome": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-chrome-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --trace on",
+    "run-heroku-firefox": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-firefox-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-firefox --trace on",
+    "run-heroku-all-tests": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-all-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --project heroku-firefox--trace on"
   },
   "keywords": [],
   "author": "",

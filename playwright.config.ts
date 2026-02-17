@@ -53,7 +53,7 @@ export default defineConfig({
         baseURL: 'https://www.saucedemo.com',
       },
       dependencies: ['setup'],
-      outputDir: 'reports_cuevaschris/swaglabs-tests-chrome-results', 
+      outputDir: 'reports-cuevaschris-swaglabs/swaglabs-tests-chrome-results', 
     
     },
 
@@ -63,7 +63,7 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         baseURL: 'https://www.saucedemo.com',
       },
-      outputDir: 'reports_cuevaschris/swaglabs-tests-no-setup-chrome-results', 
+      outputDir: 'reports-cuevaschris-swaglabs/swaglabs-tests-no-setup-chrome-results', 
     },
 
     {
@@ -72,7 +72,7 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         baseURL: 'https://the-internet.herokuapp.com',
       },
-      outputDir: 'reports_cuevaschris/heroku-tests-chrome-results', 
+      outputDir: 'reports-cuevaschris-heroku/heroku-tests-chrome-results', 
     },
   
     {
@@ -81,7 +81,7 @@ export default defineConfig({
         ...devices['Desktop Firefox'],
         baseURL: 'https://the-internet.herokuapp.com',
       },
-      outputDir: 'reports_cuevaschris/heroku-tests-firefox-results', 
+      outputDir: 'reports-cuevaschris-heroku/heroku-tests-firefox-results', 
     },
 
   //   {
