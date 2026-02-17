@@ -33,13 +33,13 @@ npm run heroku-chrome
 
 ## Getting Started
 1. **Installation**: Clone this repository and install dependencies:
-   ```bash
+```bash
 git clone https://github.com/cuevaschris/playwright-tests.git
 cd playwright-tests
 npm install
 ```
 2. **Running Tests**: Execute tests using the following command:
-   ```bash
+```bash
 npx playwright test
 ```
 
