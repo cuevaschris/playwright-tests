@@ -15,13 +15,13 @@ test('File Download', async ({ page })=> {
     
     // Upload a file to be downloaded later
     await herokuDashboardPage.viewItemLink('File Upload');
-    await herokuDashboardPage.uploadAFile('chris_pogi.txt');
+    await herokuDashboardPage.uploadAFile('chris.txt');
 
     await herokuDashboardPage.goto();
     await herokuDashboardPage.viewItemLink('File Download');
     await expect(page).toHaveURL(/download/);
     await herokuDashboardPage.downloadFiles([
-        'chris_pogi.txt',
+        'chris.txt',
     ]);
 });
 
@@ -29,7 +29,7 @@ test('File Upload - Multiple Files', async ({ page }) => {
     const herokuDashboardPage = new HerokuDashboardPage(page);
     await herokuDashboardPage.viewItemLink('File Upload');
     await herokuDashboardPage.uploadFiles([
-        'chris_pogi.txt',
+        'chris.txt',
         'sample.txt',
         'this is me.txt'
     ]);
