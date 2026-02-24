@@ -48,6 +48,14 @@ export class InventoryPage {
         await this.checkoutButton.click();
     }
 
+    async removeItemOnCart(itemToBeRemoved: string[]) {
+        for(const item of itemToBeRemoved) {
+            const itemContainer = this.page.getByTestId('inventory-item').filter({ hasText: item })
+            await itemContainer.getByRole('button', { name: 'Remove' }).click();
+            await expect(itemContainer.getByRole('button', { name: 'Remove' })).not.toBeVisible();
+        }
+    }
+
     async enterCheckoutDetails(){
         const firstName = faker.person.firstName();
         const lastName = faker.person.lastName();
@@ -67,6 +75,7 @@ export class InventoryPage {
     }
 
     async openMenu() {
+        await expect(this.page).toHaveURL(/inventory.html/)
         await this.menuButton.click();
     }
 

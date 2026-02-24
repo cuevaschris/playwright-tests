@@ -11,13 +11,25 @@ const itemsToCheckout: string[] = [
     'Sauce Labs Fleece Jacket'
 ];
 
+const itemsToRemoveAtTheCart: string[] = [
+    'Test.allTheThings() T-Shirt (Red)',
+    'Sauce Labs Bolt T-Shirt',
+]
+
+const finalItemsAtTheCardAfterRemovals: string[] = [
+    'Sauce Labs Backpack',
+    'Sauce Labs Onesie',
+    'Sauce Labs Bike Light',
+    'Sauce Labs Fleece Jacket'
+]
+
 const users = [
     { name: 'Standard User', storage: 'playwright/.auth/standard_user.json'}, 
     { name: 'Problem User', storage: 'playwright/.auth/problem_user.json'}, 
-    { name: 'Visual User', storage: 'playwright/.auth/visual_user.json'}, 
+    { name: 'Visual User', st    orage: 'playwright/.auth/visual_user.json'}, 
 ]
 
-for(const user of users ) {
+for( const user of users ) {
     test.describe(user.name, () => {
         test.use({ storageState: user.storage });
         test.beforeEach(async ({ page }) => {
@@ -38,6 +50,26 @@ for(const user of users ) {
             await inventoryPage.goToCart();
             await expect(page).toHaveURL(/cart.html/);
             await inventoryPage.assertCartContainsItems(itemsToCheckout)
+
+            await inventoryPage.startCheckout();
+            await expect(page).toHaveURL(/checkout-step-one.html/);
+        
+            await inventoryPage.enterCheckoutDetails();    // random data via faker library
+            await expect(page).toHaveURL(/checkout-step-two.html/);
+            await inventoryPage.assertPrices();
+
+            await inventoryPage.checkout();
+            await inventoryPage.expectCheckoutSuccess();
+        });
+
+        test('should be able to add three items then remove one item then checkout', async ({page}) => {
+            const inventoryPage = new InventoryPage(page);
+            await inventoryPage.addItem(itemsToCheckout);
+
+            await inventoryPage.goToCart();
+            await expect(page).toHaveURL(/cart.html/);
+            await inventoryPage.removeItemOnCart(itemsToRemoveAtTheCart);
+            await inventoryPage.assertCartContainsItems(finalItemsAtTheCardAfterRemovals)
 
             await inventoryPage.startCheckout();
             await expect(page).toHaveURL(/checkout-step-one.html/);
