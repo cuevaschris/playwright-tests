@@ -26,7 +26,7 @@ const finalItemsAtTheCardAfterRemovals: string[] = [
 const users = [
     { name: 'Standard User', storage: 'playwright/.auth/standard_user.json'}, 
     { name: 'Problem User', storage: 'playwright/.auth/problem_user.json'}, 
-    { name: 'Visual User', st    orage: 'playwright/.auth/visual_user.json'}, 
+    { name: 'Visual User', storage: 'playwright/.auth/visual_user.json'}, 
 ]
 
 for( const user of users ) {
