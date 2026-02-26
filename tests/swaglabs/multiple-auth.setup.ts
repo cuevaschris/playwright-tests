@@ -6,17 +6,17 @@ const standard_user = path.join(__dirname, '../../playwright/.auth/standard_user
 setup('authenticate standard_user', async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.goto();
-    await loginPage.login('standard_user', 'secret_sauce');
+    await loginPage.login(process.env.STANDARD_USER as string, process.env.SW_PASSWORD as string);
     await expect(page).toHaveURL(/inventory.html/);
 
     await page.context().storageState({ path: standard_user})
 });
 
 const visual_user = path.join(__dirname, '../../playwright/.auth/visual_user.json');
-setup('authenticate locked_out_user', async ({ page }) => {
+setup('authenticate visual_user', async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.goto();
-    await loginPage.login('visual_user', 'secret_sauce');
+    await loginPage.login(process.env.VISUAL_USER as string, process.env.SW_PASSWORD as string);
     await expect(page).toHaveURL(/inventory.html/);
 
     await page.context().storageState({ path: visual_user})
@@ -26,7 +26,7 @@ const problem_user = path.join(__dirname, '../../playwright/.auth/problem_user.j
 setup('authenticate problem_user', async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.goto();
-    await loginPage.login('problem_user', 'secret_sauce');
+    await loginPage.login(process.env.PROBLEM_USER as string, process.env.SW_PASSWORD as string);
     await expect(page).toHaveURL(/inventory.html/);
 
     await page.context().storageState({ path: problem_user})

@@ -3,18 +3,18 @@ import { LoginPage } from '../../pages/swaglabs-pages/login.page';
 import { InventoryPage } from '../../pages/swaglabs-pages/inventory.page';
 
 const users = [
-    { email: 'standard_user', password: 'secret_sauce' },
-    { email: 'problem_user', password: 'secret_sauce' },
-    { email: 'performance_glitch_user', password: 'secret_sauce' },
-    { email: 'error_user', password: 'secret_sauce' },
-    { email: 'visual_user', password: 'secret_sauce' },
+    { email: process.env.STANDARD_USER as string, password: process.env.SW_PASSWORD as string },
+    { email: process.env.PROBLEM_USER as string, password: process.env.SW_PASSWORD as string },
+    { email: process.env.PERFORMANCE_GLITCH_USER as string, password: process.env.SW_PASSWORD as string },
+    { email: process.env.ERROR_USER as string, password: process.env.SW_PASSWORD as string },
+    { email: process.env.VISUAL_USER as string, password: process.env.SW_PASSWORD as string },
 ];
 
 test.describe('Login Tests', () => {
     test('Should be able to login using standard_user credentials successfully', async ({ page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.goto();
-        await loginPage.login('standard_user', 'secret_sauce')
+        await loginPage.login(process.env.STANDARD_USER as string, process.env.SW_PASSWORD as string)
         await expect(page).toHaveURL(/inventory.html/)
     });
 
@@ -22,7 +22,7 @@ test.describe('Login Tests', () => {
         const errorMessageHeading = page.getByRole('heading', { name: 'Epic sadface: Sorry, this user has been locked out.'})
         const loginPage = new LoginPage(page);
         await loginPage.goto();
-        await loginPage.login('locked_out_user', 'secret_sauce');
+        await loginPage.login(process.env.LOCKED_OUT_USER as string, process.env.SW_PASSWORD as string);
         await expect(errorMessageHeading).toBeVisible();
         await expect(page).not.toHaveURL(/inventory.html/)
     });
@@ -30,28 +30,28 @@ test.describe('Login Tests', () => {
     test('Should be able to login using problem_user credentials successfully', async ({ page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.goto();
-        await loginPage.login('problem_user', 'secret_sauce')
+        await loginPage.login(process.env.PROBLEM_USER as string, process.env.SW_PASSWORD as string)
         await expect(page).toHaveURL(/inventory.html/)
     });
 
     test('Should be able to login using performance_glitch_user credentials successfully', async ({ page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.goto();
-        await loginPage.login('performance_glitch_user', 'secret_sauce')
+        await loginPage.login(process.env.PERFORMANCE_GLITCH_USER as string, process.env.SW_PASSWORD as string)
         await expect(page).toHaveURL(/inventory.html/)
     });
 
     test('Should be able to login using error_user credentials successfully', async ({ page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.goto();
-        await loginPage.login('error_user', 'secret_sauce')
+        await loginPage.login(process.env.ERROR_USER as string, process.env.SW_PASSWORD as string)
         await expect(page).toHaveURL(/inventory.html/)
     });
 
     test('Should be able to login using visual_user credentials successfully', async ({ page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.goto();
-        await loginPage.login('visual_user', 'secret_sauce')
+        await loginPage.login(process.env.VISUAL_USER as string, process.env.SW_PASSWORD as string)
         await expect(page).toHaveURL(/inventory.html/)
     });
 });

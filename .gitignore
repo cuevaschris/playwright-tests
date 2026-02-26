@@ -14,3 +14,6 @@ backup/
 .vscode
 specs/
 tests/seed*
+
+# ENV Related Stuff
+.env
