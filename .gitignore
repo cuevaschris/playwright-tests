@@ -7,3 +7,10 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 reports-*
+
+# MCP Related Stuff
+.github/*
+backup/
+.vscode
+specs/
+tests/seed*

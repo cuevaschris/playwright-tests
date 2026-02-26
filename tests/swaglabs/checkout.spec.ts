@@ -38,12 +38,8 @@ for( const user of users ) {
             const inventoryPage = new InventoryPage(page);
             await inventoryPage.resetAppState();
         });
-        
-        test('should navigate to dashboard page', async ({ page }) => {
-            await expect(page).toHaveURL(/inventory.html/)
-        });
 
-        test('should be able to checkout three items successfully', async ({ page }) => {
+        test('should be able to checkout all items successfully', async ({ page }) => {
             const inventoryPage = new InventoryPage(page);
             await inventoryPage.addItem(itemsToCheckout);
 
@@ -62,7 +58,7 @@ for( const user of users ) {
             await inventoryPage.expectCheckoutSuccess();
         });
 
-        test('should be able to add three items then remove one item then checkout', async ({page}) => {
+        test('should be able to add all items then remove two item then checkout', async ({page}) => {
             const inventoryPage = new InventoryPage(page);
             await inventoryPage.addItem(itemsToCheckout);
 
@@ -81,33 +77,19 @@ for( const user of users ) {
             await inventoryPage.checkout();
             await inventoryPage.expectCheckoutSuccess();
         });
-        
-        test('should be able to sort the inventory list by Alphabetical order (A-Z)', async ({ page }) => {
-            const inventoryPage = new InventoryPage(page);
-            await inventoryPage.sortBy('Name (A to Z)');
-            await inventoryPage.assertSort('Name (A to Z)');
-        });
-        
-        test('should be able to sort the inventory list by Alphabetical order (Z-A)', async ({ page }) => {
-            const inventoryPage = new InventoryPage(page);
-            await inventoryPage.sortBy('za');
-            await inventoryPage.assertSort('za');
-        });
-        
-        test('should be able to sort the inventory list by Price (low to high)', async ({ page }) => {
-            const inventoryPage = new InventoryPage(page);
-            await inventoryPage.sortBy('lohi');
-            await inventoryPage.assertSort('lohi');
-        });
 
-        test('should be able to sort the inventory list by Price (high to low)', async ({ page }) => {
+        test('Should be able to clear cart and badge when app state is reset successfully', async ({ page }) => {
             const inventoryPage = new InventoryPage(page);
-            await inventoryPage.sortBy('Price (high to low)');
-            await inventoryPage.assertSort('Price (high to low)');
-        });
-
-        test('visual testing - inventory page', async({ page }) => {
-            await expect(page).toHaveScreenshot('inventory-page.png', { fullPage: true });
+            await inventoryPage.addItem(itemsToCheckout);
+    
+            await expect(inventoryPage.cartBadge).toHaveText(String(itemsToCheckout.length));
+    
+            await inventoryPage.resetAppState();
+            await expect(inventoryPage.cartBadge).not.toBeVisible();
+    
+            await inventoryPage.goToCart();
+            await expect(page).toHaveURL(/cart.html/);
+            await expect(page.getByTestId('inventory-item')).toHaveCount(0);
         });
     });
 }

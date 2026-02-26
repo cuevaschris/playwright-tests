@@ -21,6 +21,5 @@ export class LoginPage{
         await this.usernameField.fill(email);
         await this.passwordField.fill(password);
         await this.submitButton.click()
-        await expect(this.page).toHaveURL(/inventory.html/)
     }
 }

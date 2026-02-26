@@ -15,6 +15,8 @@ export class InventoryPage {
     readonly menuButton: Locator;
     readonly resetAppStateMenuButton: Locator;
     readonly closeMenuButton: Locator;
+    readonly logoutMenuButton: Locator;
+    readonly cartBadge: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -30,6 +32,8 @@ export class InventoryPage {
         this.menuButton = this.page.getByRole('button', { name: 'Open Menu'});
         this.resetAppStateMenuButton = this.page.getByRole('link', { name: 'Reset App State' });
         this.closeMenuButton = this.page.getByRole('button', { name: 'Close Menu' });
+        this.logoutMenuButton = this.page.getByRole('link', { name: 'Logout' });
+        this.cartBadge = this.page.getByTestId('shopping-cart-badge');
     }
 
     async addItem(items: string[]) {
@@ -83,6 +87,11 @@ export class InventoryPage {
         this.openMenu();
         await this.resetAppStateMenuButton.click();
         await this.closeMenuButton.click();
+    }
+
+    async logout() {
+        await this.openMenu();
+        await this.logoutMenuButton.click();
     }
 
     async expectCheckoutSuccess(){
