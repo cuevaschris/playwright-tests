@@ -39,7 +39,7 @@ for( const user of users ) {
             await inventoryPage.resetAppState();
         });
 
-        test('should be able to checkout all items successfully', async ({ page }) => {
+        test('should be able to checkout all items successfully', { tag: '@smoke' }, async ({ page }) => {
             const inventoryPage = new InventoryPage(page);
             await inventoryPage.addItem(itemsToCheckout);
 
