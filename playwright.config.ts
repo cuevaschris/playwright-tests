@@ -80,10 +80,15 @@ export default defineConfig({
       outputDir: 'reports-cuevaschris-heroku/heroku-tests-firefox-results', 
     },
 
-  //   {
-  //     name: 'firefox',
-  //     use: { ...devices['Desktop Firefox'] },
-  //   },
+    {
+      name: 'api-testing',
+      
+    },
+
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
 
   //   {
   //     name: 'webkit',
