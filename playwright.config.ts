@@ -82,7 +82,6 @@ export default defineConfig({
 
     {
       name: 'api-testing',
-      
     },
 
     {
