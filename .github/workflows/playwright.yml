@@ -62,18 +62,18 @@ jobs:
       shell: bash
     - name: Install dependencies
       run: npm ci
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
     - uses: actions/cache/save@v5
       id: cache
       with:
         path: ~/.npm
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+        key: Playwright-Dependency-Cache
     - name: Run Playwright tests
       run: npm run run-api-testing
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
-        name: rreports-cuevaschris-swaglabss
-        path: reports-cuevaschris-swaglabs/
+        name: reports-cuevaschris-api/api-tests-all-runs_results
+        path: reports-cuevaschris-api/api-tests-all-runs/
         retention-days: 30
