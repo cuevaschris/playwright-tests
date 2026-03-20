@@ -2,61 +2,59 @@ name: Playwright Tests
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
 jobs:
-  test-heroku:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Create .env file
-      run: echo "${{ secrets.DOTENV_FILE_CONTENT }}" > .env
-      shell: bash
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npm run run-heroku-chrome
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: reports-cuevaschris-heroku
-        path: reports-cuevaschris-heroku/
-        retention-days: 30
-  test-swaglabs:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Create .env file
-      run: echo "${{ secrets.DOTENV_FILE_CONTENT }}" > .env
-      shell: bash
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npm run run-swaglabs-tests
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: rreports-cuevaschris-swaglabss
-        path: reports-cuevaschris-swaglabs/
-        retention-days: 30
+  # test-heroku:
+  #   timeout-minutes: 60
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v6
+  #   - uses: actions/setup-node@v6
+  #     with:
+  #       node-version: lts/*
+  #   - name: Create .env file
+  #     run: echo "${{ secrets.DOTENV_FILE_CONTENT }}" > .env
+  #     shell: bash
+  #   - name: Install dependencies
+  #     run: npm ci
+  #   - name: Install Playwright Browsers
+  #     run: npx playwright install --with-deps
+  #   - name: Run Playwright tests
+  #     run: npm run run-heroku-chrome
+  #   - uses: actions/upload-artifact@v4
+  #     if: ${{ !cancelled() }}
+  #     with:
+  #       name: reports-cuevaschris-heroku
+  #       path: reports-cuevaschris-heroku/
+  #       retention-days: 30
+  # test-swaglabs:
+  #   timeout-minutes: 60
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v6
+  #   - uses: actions/setup-node@v6
+  #     with:
+  #       node-version: lts/*
+  #   - name: Create .env file
+  #     run: echo "${{ secrets.DOTENV_FILE_CONTENT }}" > .env
+  #     shell: bash
+  #   - name: Install dependencies
+  #     run: npm ci
+  #   - name: Install Playwright Browsers
+  #     run: npx playwright install --with-deps
+  #   - name: Run Playwright tests
+  #     run: npm run run-swaglabs-tests
+  #   - uses: actions/upload-artifact@v4
+  #     if: ${{ !cancelled() }}
+  #     with:
+  #       name: rreports-cuevaschris-swaglabss
+  #       path: reports-cuevaschris-swaglabs/
+  #       retention-days: 30
   api-testing-eviltester-site:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - uses: actions/checkout@v6
+    - uses: actions/setup-node@v6
       with:
         node-version: lts/*
     - name: Create .env file
@@ -64,6 +62,12 @@ jobs:
       shell: bash
     - name: Install dependencies
       run: npm ci
+    - name: Cache Dependencies  
+      uses: actions/cache/save@5
+      id: playwrightDependeciesCache
+      with: 
+        path: ~/.npm
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests

@@ -30,9 +30,10 @@ for (const user of users ) {
     })
 }
 
-test('Should not be able to login using locked_out_user credentials successfully', {tag: '@smoke' }, async ({ page }) => {
+test('Should not be able to login using locked_out_user credentials successfully', { tag: '@smoke' }, async ({ page }) => {
     const errorMessageHeading = page.getByRole('heading', { name: 'Epic sadface: Sorry, this user has been locked out.'})
     const loginPage = new LoginPage(page);
+
     await loginPage.goto();
     await loginPage.login(process.env.LOCKED_OUT_USER as string, process.env.SW_PASSWORD as string);
     await expect(errorMessageHeading).toBeVisible();
