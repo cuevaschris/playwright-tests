@@ -70,7 +70,7 @@ jobs:
       id: pw-cache-id
       with:
         path: ~/.npm
-        key: Playwright-Dependency-Cache
+        key: Playwright-Dependency-Cache-1
     - name: Run Playwright tests
       run: npm run run-api-testing
     - uses: actions/upload-artifact@v4
