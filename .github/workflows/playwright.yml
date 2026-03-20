@@ -62,11 +62,10 @@ jobs:
       shell: bash
     - name: Install dependencies
       run: npm ci
-    - name: Cache Dependencies  
-      uses: actions/cache/save@5
-      id: playwrightDependeciesCache
-      with: 
-        path: ~/.npm
+    - uses: actions/cache/save@v5
+      id: cache
+      with:
+        path: path/to/dependencies
         key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
