@@ -65,7 +65,7 @@ jobs:
     - uses: actions/cache/save@v5
       id: cache
       with:
-        path: path/to/dependencies
+        path: ~/.npm
         key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
