@@ -9,7 +9,8 @@
     "run-heroku-chrome": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-chrome-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --trace on",
     "run-heroku-firefox": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-firefox-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-firefox --trace on",
     "run-heroku-all-tests": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-all-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --project heroku-firefox--trace on",
-    "run-api-testing": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-api/api-tests-all-runs && npx playwright test tests/api/evil-tester-api-testing.spec.ts --project api-testing --workers=1"
+    "run-api-testing-on-windows": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-api/api-tests-all-runs && npx playwright test tests/api/evil-tester-api-testing.spec.ts --project api-testing --workers=1",
+    "run-api-testing-on-linux": "PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-api/api-tests-all-runs && npx playwright test tests/api/evil-tester-api-testing.spec.ts --project api-testing --workers=1"
   },
   "keywords": [],
   "author": "",
