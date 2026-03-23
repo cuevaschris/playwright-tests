@@ -20,7 +20,7 @@ jobs:
   #     run: npx playwright install --with-deps
   #   - name: Run Playwright tests
   #     run: npm run run-heroku-chrome
-  #   - uses: actions/upload-artifact@v4
+  #   - uses: actions/upload-artifact@v6
   #     if: ${{ !cancelled() }}
   #     with:
   #       name: reports-cuevaschris-heroku
@@ -43,7 +43,7 @@ jobs:
   #     run: npx playwright install --with-deps
   #   - name: Run Playwright tests
   #     run: npm run run-swaglabs-tests
-  #   - uses: actions/upload-artifact@v4
+  #   - uses: actions/upload-artifact@v6
   #     if: ${{ !cancelled() }}
   #     with:
   #       name: rreports-cuevaschris-swaglabss
@@ -80,9 +80,9 @@ jobs:
 
     - name: Run Playwright testss
       run: npm run run-api-testing
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v6
       if: ${{ !cancelled() }}
       with:
-        name: reports-cuevaschris-api/api-tests-all-runs_results
-        path: reports-cuevaschris-api/api-tests-all-runs/
+        name: api-results
+        path: reports-cuevaschris-api/api-tests-all-runs
         retention-days: 30
