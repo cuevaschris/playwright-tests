@@ -57,6 +57,7 @@ jobs:
     - uses: actions/setup-node@v6
       with:
         node-version: lts/*
+
     - name: Create .env file
       run: echo "${{ secrets.DOTENV_FILE_CONTENT }}" > .env
       shell: bash
@@ -72,7 +73,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
 
-    - name: Install dependencies
+    - name: Install Dependencies
       if: steps.node-cache.outputs.cache-hit != 'true'
       run: |
         npm ci
@@ -80,6 +81,7 @@ jobs:
 
     - name: Run Playwright testss
       run: npm run run-api-testing-on-linux
+      
     - name: Check output folders
       run: ls -R 
     - uses: actions/upload-artifact@v6
