@@ -26,6 +26,7 @@ jobs:
   #       name: reports-cuevaschris-heroku
   #       path: reports-cuevaschris-heroku/
   #       retention-days: 30
+
   # test-swaglabs:
   #   timeout-minutes: 60
   #   runs-on: ubuntu-latest
@@ -34,21 +35,40 @@ jobs:
   #   - uses: actions/setup-node@v6
   #     with:
   #       node-version: lts/*
+
   #   - name: Create .env file
   #     run: echo "${{ secrets.DOTENV_FILE_CONTENT }}" > .env
   #     shell: bash
-  #   - name: Install dependencies
-  #     run: npm ci
-  #   - name: Install Playwright Browsers
-  #     run: npx playwright install --with-deps
-  #   - name: Run Playwright tests
-  #     run: npm run run-swaglabs-tests
+
+  #   - name: Cache Node modules
+  #     id: node-cache
+  #     uses: actions/cache@v5
+  #     with:
+  #       path: |
+  #         ~/.npm
+  #         node_modules
+  #       key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+  #       restore-keys: |
+  #         ${{ runner.os }}-node-
+
+  #   - name: Install Dependencies
+  #     if: steps.node-cache.outputs.cache-hit != 'true'
+  #     run: |
+  #       npm ci
+  #       npx playwright install --with-deps
+
+  #   - name: Run Playwright testss
+  #     run: npm run run-api-testing-on-linux
+
+  #   - name: Check output folders
+  #     run: ls -R 
   #   - uses: actions/upload-artifact@v6
   #     if: ${{ !cancelled() }}
   #     with:
-  #       name: rreports-cuevaschris-swaglabss
-  #       path: reports-cuevaschris-swaglabs/
+  #       name: api-results
+  #       path: reports-cuevaschris-api/api-tests-all-runs
   #       retention-days: 30
+
   api-testing-eviltester-site:
     timeout-minutes: 60
     runs-on: ubuntu-latest
@@ -81,7 +101,7 @@ jobs:
 
     - name: Run Playwright testss
       run: npm run run-api-testing-on-linux
-      
+
     - name: Check output folders
       run: ls -R 
     - uses: actions/upload-artifact@v6

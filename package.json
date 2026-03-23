@@ -4,13 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run-swaglabs-tests": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-swaglabs/swaglabs-tests-runs && npx playwright test tests/swaglabs/ --project swaglabs-tests --trace on",
-    "run-swaglabs-no-setup-tests": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-swaglabs/swaglabs-tests-runs && npx playwright test tests/swaglabs/ --project swaglabs-tests-no-setup --trace on",
-    "run-heroku-chrome": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-chrome-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --trace on",
-    "run-heroku-firefox": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-firefox-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-firefox --trace on",
-    "run-heroku-all-tests": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-all-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --project heroku-firefox--trace on",
+    "run-swaglabs-tests-on-windows": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-swaglabs/swaglabs-tests-runs && npx playwright test tests/swaglabs/ --project swaglabs-tests --trace on",
+    "run-swaglabs-tests-on-linux": "mkdir -p reports-cuevaschris-swaglabs && PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-swaglabs/swaglabs-tests-runs && npx playwright test tests/swaglabs/ --project swaglabs-tests --trace on",
+    
+    "run-swaglabs-no-setup-tests-on-windows": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-swaglabs/swaglabs-tests-runs && npx playwright test tests/swaglabs/ --project swaglabs-tests-no-setup --trace on",
+    "run-swaglabs-no-setup-tests-on-linux": "mkdir -p reports-cuevaschris-swaglabs && PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-swaglabs/swaglabs-tests-runs && npx playwright test tests/swaglabs/ --project swaglabs-tests-no-setup --trace on",
+    
+    "run-heroku-chrome-on-windows": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-chrome-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --trace on",
+    "run-heroku-chrome-on-linux": "mkdir -p reports-cuevaschris-heroku && PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-chrome-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --trace on",
+    
+    "run-heroku-firefox-on-windows": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-firefox-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-firefox --trace on",
+    "run-heroku-firefox-on-linux": "mkdir -p reports-cuevaschris-heroku && PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-firefox-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-firefox --trace on",
+    
+    "run-heroku-all-tests-on-windows": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-all-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --project heroku-firefox--trace on",
+    "run-heroku-all-tests-on-linux": "mkdir -p reports-cuevaschris-heroku && PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-heroku/heroku-tests-all-runs && npx playwright test tests/heroku/heroku.spec.ts --project heroku-chrome --project heroku-firefox--trace on",
+    
     "run-api-testing-on-windows": "set PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-api/api-tests-all-runs && npx playwright test tests/api/evil-tester-api-testing.spec.ts --project api-testing --workers=1",
-    "run-api-testing-on-linux": "mkdir -p reports-cuevaschris-api && PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-api/api-tests-all-runs npx playwright test tests/api/evil-tester-api-testing.spec.ts --project api-testing --workers=1"
+    "run-api-testing-on-linux": "mkdir -p reports-cuevaschris-api && PLAYWRIGHT_HTML_OUTPUT_DIR=reports-cuevaschris-api/api-tests-all-runs && npx playwright test tests/api/evil-tester-api-testing.spec.ts --project api-testing --workers=1"
   },
   "keywords": [],
   "author": "",
