@@ -38,7 +38,8 @@ export default defineConfig({
   projects: [
     { name: 'setup',
       use: {
-        baseURL: 'https://www.saucedemo.com'
+        ...devices['Desktop Chrome'],
+        baseURL: 'https://www.saucedemo.com',
       },
       testMatch: /.*\.setup\.ts/ },
 
