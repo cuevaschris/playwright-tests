@@ -42,6 +42,7 @@ jobs:
 
     - name: Cache Node modules
       id: node-cache
+      continue-on-error: true
       uses: actions/cache@v5
       with:
         path: |
@@ -90,6 +91,7 @@ jobs:
         path: |
           ~/.npm
           node_modules
+          ~/.cache/
         key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
