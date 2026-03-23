@@ -9,7 +9,7 @@ node_modules/
 reports-*
 
 # MCP Related Stuff
-.github/*
+.github/agents
 backup/
 .vscode
 specs/
