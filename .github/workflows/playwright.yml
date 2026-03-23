@@ -80,6 +80,8 @@ jobs:
 
     - name: Run Playwright testss
       run: npm run run-api-testing-on-linux
+    - name: Check output folders
+      run: ls -R 
     - uses: actions/upload-artifact@v6
       if: ${{ !cancelled() }}
       with:
